@@ -92,7 +92,7 @@ int simulateOPTFF(int k, const vector<int>& req) {
     return misses;
 }
 
-int main() {
+int runSim() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
