@@ -36,3 +36,11 @@ Question 3:
 Let OPTFF be Belady’s Farthest-in-Future algorithm.
 Let ( A ) be any offline algorithm that knows the full request sequence.
 Prove that the number of misses of OPTFF is no larger than that of ( A ) on any fixed sequence.
+
+Answer: To prove that the misses of OPTFF is <= misses of (A) we can prove by contradiction
+
+Let A be any caching algorithm for a fixed request sequence and cache can be called size n, if we find the first time t where A and OPTFF
+make different eviction choice we can call that B. OPTFF evicts the item x containing B whose next request
+is farthest while A evicts some other item z. if we were to use A' that is exactly like A exept it evicts x instead of z . Sense we know 
+nextt(x) >= nextt(z) we know we need x first therefore keeping z cannot cause an extra miss before the request of z. This shows that A' cna only do the same or better. so Replacing A's choice by OPTFF choice does not increase misses, if there is a an exchange that does not match A turns into OPTFF without increasing the misses
+so OPTFF has no more misses than A on any fixed Sequence.
