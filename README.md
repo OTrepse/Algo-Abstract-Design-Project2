@@ -24,6 +24,10 @@ Example output:
 
 Assumptions:
 
+When wanting to use different files or adding files of your own change the second part of
+`./cache_sim data/example.in`
+to where the directory and file location of your desired file.
+
 ### Question 1:
 
 Use at least three nontrivial input files (each containing 50 or more requests).
