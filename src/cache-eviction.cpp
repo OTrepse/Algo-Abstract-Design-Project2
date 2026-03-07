@@ -4,6 +4,7 @@
 #include <list>
 #include <unordered_set>
 #include <unordered_map>
+#include <fstream>
 using namespace std;
 
 const int INF = 1000000000;
@@ -92,15 +93,12 @@ int simulateOPTFF(int k, const vector<int>& req) {
     return misses;
 }
 
-int runSim() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
+int runSim(istream& in) {
     int k, m;
-    cin >> k >> m;
+    in >> k >> m;
 
     vector<int> req(m);
-    for (int i = 0; i < m; i++) cin >> req[i];
+    for (int i = 0; i < m; i++) in >> req[i];
 
     int fifo = simulateFIFO(k, req);
     int lru  = simulateLRU(k, req);
@@ -109,5 +107,25 @@ int runSim() {
     cout << "FIFO  : " << fifo << "\n";
     cout << "LRU   : " << lru  << "\n";
     cout << "OPTFF : " << opt  << "\n";
+
     return 0;
+}
+
+
+int main(int const argc, char* argv[]) {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    if (argc != 2) {
+        cerr << "Usage: " << argv[0] << " <input_file>\n";
+        return 1;
+    }
+
+    ifstream fin(argv[1]);
+    if (!fin) {
+        cerr << "Error: could not open input file.\n";
+        return 1;
+    }
+
+    return runSim(fin);
 }
